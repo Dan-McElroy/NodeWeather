@@ -7,15 +7,24 @@ app.get('', (req, res) => {
 })
 
 app.get('/help', (req, res) => {
-    res.send('Help page')
+    res.send([{
+        name: 'Dan',
+        age: 28
+    }, {
+        name: 'Andrew',
+        age: 27
+    }])
 })
 
 app.get('/about', (req, res) => {
-    res.send('About page')
+    res.send('<h1>About</h1>')
 })
 
 app.get('/weather', (req, res) => {
-    res.send('Weather page')
+    res.send({
+        forecast: 'Really good',
+        location: 'Berlin, Germany'
+    })
 })
 
 app.listen(3000, () => {
