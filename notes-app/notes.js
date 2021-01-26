@@ -6,9 +6,9 @@ const filePath = 'notes.json';
 const addNote = async (title, body) => {
     const notes = await loadNotes();
 
-    const existing = notes.filter((note) => note.title === title);
+    const existing = notes.find((note) => note.title === title)
 
-    if (existing.length > 0) {
+    if (existing) {
         console.log(chalk.red.bold('Note title taken!'))
         return
     }
@@ -49,10 +49,24 @@ const listNotes = async() => {
     }))
 }
 
+const readNote = async(title) => {
+    const notes = await loadNotes()
+
+    const note = notes.find((note) => note.title === title)
+    
+    if (!note) {
+        console.log(chalk.red.bold('No note found!'))
+    }
+
+    console.log(chalk.inverse(note.title))
+    console.log(note.body)
+}
+
 module.exports = {
     addNote: addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }
 
 const loadNotes = async () => {
