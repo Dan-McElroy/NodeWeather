@@ -1,4 +1,5 @@
 const request = require('postman-request')
+const geocode = require('./utils/geocode')
 
 request({ 
     url: 'http://api.weatherstack.com/current',
@@ -23,24 +24,10 @@ request({
         current.weather_descriptions[0], current.temperature, current.feelslike)
 })
 
-request({
-    url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json',
-    qs: {
-        access_token: 'pk.eyJ1IjoiZGFubWNlbHJveSIsImEiOiJja2tlZ3VxYWMwMG1iMnZtcDB1Nzl2ZGppIn0.yTmkyzgh1CUMVQdGCf4MBg',
-        limit: 1
-    },
-    json: true
-}, (error, response) => {
+geocode('Boston', (error, data) => {
     if (error) {
-        console.log('Unable to connect to geocoding service!')
+        console.log(error)
         return
     }
-
-    if (response.body.features.length === 0) {
-        console.log('No results found!')
-        return
-    }
-
-    const coordinates = response.body.features[0].center
-    console.log('Latitude: %f, Longitude: %f', coordinates[1], coordinates[0])
+    console.log('Data: ' + JSON.stringify(data))
 })
