@@ -17,7 +17,7 @@ const forecast = (latitude, longitude, callback) => {
             return callback('Unable to find location')
         }
     
-        const current = response.body.current
+        const {current} = response.body
         callback(undefined, `${current.weather_descriptions[0]}: it is currently ${current.temperature} degrees. It feels like ${current.feelslike} degrees out.`)
     })
 }
