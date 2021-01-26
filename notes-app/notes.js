@@ -43,7 +43,7 @@ const listNotes = async() => {
     console.log(chalk.inverse('Your notes:'))
 
     const notes = await loadNotes()
-    
+
     notes.forEach((note => {
         console.log(note.title)
     }))
