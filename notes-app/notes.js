@@ -3,8 +3,6 @@ const chalk = require('chalk');
 
 const filePath = 'notes.json';
 
-const getNotes = async () => await loadNotes()
-
 const addNote = async (title, body) => {
     const notes = await loadNotes();
 
@@ -40,10 +38,21 @@ const removeNote = async (title) => {
     console.log(chalk.green('Note removed!'))
 }
 
+const listNotes = async() => {
+    
+    console.log(chalk.inverse('Your notes:'))
+
+    const notes = await loadNotes()
+    
+    notes.forEach((note => {
+        console.log(note.title)
+    }))
+}
+
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
 
 const loadNotes = async () => {
