@@ -5,18 +5,16 @@ const forecast = (latitude, longitude, callback) => {
         url: 'http://api.weatherstack.com/current',
         qs: {
             access_key: '43102757838af7ddfab80fb1c51eaacc',
-            query: latitude + `${latitude},${longitude}`
+            query: `${latitude},${longitude}`
         },
         json: true 
     }, (error, response) => {
         if (error) {
-            callback('Unable to connect to weather service!')
-            return
+            return callback('Unable to connect to weather service!')
         }
     
         if (response.body.success === false) {
-            callback('Unable to find location')
-            return
+            return callback('Unable to find location')
         }
     
         const current = response.body.current
