@@ -8,19 +8,19 @@ const geocode = (address, callback) => {
             limit: 1
         },
         json: true
-    }, (error, response) => {
+    }, (error, { body }) => {
         if (error) {
             return callback('Unable to connect to geocoding service!')
         }
 
-        if (response.body.features.length === 0) {
+        if (body.features.length === 0) {
             return callback('No results found!')
         }
-        const location = response.body.features[0]
+        const { center, place_name:location } = body.features[0]
         callback(undefined, {
-            latitude: location.center[1],
-            longitude: location.center[0],
-            location: location.place_name
+            latitude: center[1],
+            longitude: center[0],
+            location
         })
     })
 }
