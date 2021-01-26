@@ -1,5 +1,4 @@
-const add = require('./utils');   // Lecturer specified suffix, but leaving it out also works
+const getNotes = require('./notes');
 
-const sum = add(4,-2);
-
-console.log(sum);
+const notes = getNotes();
+console.log(notes);
