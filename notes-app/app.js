@@ -1,5 +1,5 @@
-const fs = require('fs');
+const add = require('./utils');   // Lecturer specified suffix, but leaving it out also works
 
-// fs.writeFileSync('notes.txt', 'My name is Dan.')
+const sum = add(4,-2);
 
-fs.appendFileSync('notes.txt', ' Welcome to my document.')
+console.log(sum);
