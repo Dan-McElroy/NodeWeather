@@ -14,8 +14,8 @@ const addNote = async (title, body) => {
     }
 
     notes.push({
-        title: title,
-        body: body
+        title,
+        body
     })
 
     await saveNotes(notes)
@@ -62,12 +62,7 @@ const readNote = async(title) => {
     console.log(note.body)
 }
 
-module.exports = {
-    addNote: addNote,
-    removeNote: removeNote,
-    listNotes: listNotes,
-    readNote: readNote
-}
+module.exports = { addNote, removeNote, listNotes, readNote }
 
 const loadNotes = async () => {
     try {
