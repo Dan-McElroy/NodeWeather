@@ -3,9 +3,7 @@ const chalk = require('chalk');
 
 const filePath = 'notes.json';
 
-const getNotes = async () => {
-    return loadNotes();
-}
+const getNotes = async () => await loadNotes()
 
 const addNote = async (title, body) => {
     const notes = await loadNotes();
