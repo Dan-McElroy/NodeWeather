@@ -1,0 +1,3 @@
+[submodule "weather-server"]
+	path = weather-server
+	url = git@github.com:Dan-McElroy/UdemyWeather.git
