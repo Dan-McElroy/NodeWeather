@@ -40,9 +40,16 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
+    const { address } = req.query
+    if (!address) {
+        return res.send({
+            error: 'Address must be provided'
+        })
+    }
     res.send({
         forecast: 'Really good',
-        location: 'Berlin, Germany'
+        location: 'Berlin, Germany',
+        address
     })
 })
 
