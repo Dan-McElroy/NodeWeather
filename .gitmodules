@@ -4,3 +4,6 @@
 [submodule "tasks-server"]
 	path = tasks-server
 	url = git@github.com:Dan-McElroy/UdemyTasks
+[submodule "chat-server"]
+	path = chat-server
+	url = git@github.com:Dan-McElroy/UdemyChat
